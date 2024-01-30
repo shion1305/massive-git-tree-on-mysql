@@ -1,10 +1,14 @@
+variable db_name {}
+variable db_username {}
+variable db_password {}
+
 resource "aws_rds_cluster" "aurora_cluster" {
   engine                          = "aurora-mysql"
   engine_version                  = "8.0.mysql_aurora.3.04.1"
   #  db_subnet_group_name            = aws_db_subnet_group.example.name // optional
-  database_name                   = "main_db"
-  master_username                 = "username"
-  master_password                 = "password"
+  database_name                   = var.db_name
+  master_username                 = var.db_username
+  master_password                 = var.db_password
   db_cluster_parameter_group_name = aws_rds_cluster_parameter_group.custom_rds_profile.name
   vpc_security_group_ids          = [aws_security_group.aurora_sg.id]
 }
