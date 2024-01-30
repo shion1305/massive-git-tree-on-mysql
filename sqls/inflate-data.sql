@@ -9,9 +9,9 @@ DELIMITER //
 CREATE PROCEDURE GenerateCommits(remain INT, parent_id CHAR(40), level INT)
 BEGIN
     DECLARE i INT DEFAULT 1;
-    DECLARE max_commits INT DEFAULT 2;
+    DECLARE max_commits INT DEFAULT 10;
     DECLARE commit_id CHAR(40);
-    DECLARE generation_rate FLOAT DEFAULT 0.505;
+    DECLARE generation_rate FLOAT DEFAULT 0.101;
 
     IF remain > 0 THEN
         WHILE i <= max_commits
@@ -31,7 +31,7 @@ END //
 CREATE PROCEDURE MassOperation()
 BEGIN
     DECLARE i int DEFAULT 1;
-    WHILE i < 50
+    WHILE i < 2000
         DO
             CALL GenerateCommits(250, NULL, 1);
             SET i = i + 1;
