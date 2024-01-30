@@ -1,8 +1,7 @@
 USE test;
 
-SELECT *
-FROM commits
-WHERE parent_commit_id IS NULL;
+SELECT COUNT(1)
+FROM commits;
 
 SELECT commit_id
 FROM commits
