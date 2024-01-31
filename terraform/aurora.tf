@@ -37,13 +37,13 @@ resource "aws_rds_cluster_parameter_group" "custom_rds_profile" {
 
   parameter {
     name         = "thread_stack"
-    value        = "10M"
+    value        = "4194304"
     apply_method = "pending-reboot"
   }
 
   parameter {
     name         = "max_sp_recursion_depth"
-    value        = "2000"
+    value        = "255"
     apply_method = "pending-reboot"
   }
 }
